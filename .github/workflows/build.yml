@@ -1,27 +1,27 @@
-# name: Build and Push Docker Image
+name: Build and Push Docker Image
 
-# on:
-#   push:
-#     branches:
-#       [ main ]
-#     paths-ignore:
-#       - "**.md"
-#   workflow_dispatch:
+on:
+  push:
+    branches:
+      [ main ]
+    paths-ignore:
+      - "**.md"
+  workflow_dispatch:
 
-# jobs:
-#     build:
-#         runs-on: ubuntu-latest
-#         steps:
-#         - name: Checkout code
-#           uses: actions/checkout@v3
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout code
+          uses: actions/checkout@v3
 
-#         - name: Build docker image
-#           run: docker build -t ${{secrets.DOCKER_USERNAME}}/hyobot .
+        - name: Build docker image
+          run: docker build -t ${{secrets.DOCKER_USERNAME}}/common-runner-image .
 
-#         - name: Log into Docker and upload image
-#           env: 
-#             DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-#             DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-#           run: |
-#              echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-#              docker push ${{secrets.DOCKER_USERNAME}}/hyobot
+        - name: Log into Docker and upload image
+          env: 
+            DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+            DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          run: |
+             echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+             docker push ${{secrets.DOCKER_USERNAME}}/common-runner-image:latest
