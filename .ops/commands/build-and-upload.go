@@ -15,9 +15,9 @@ func init() {
 	}
 }
 
-func (Ops) Build() {
+func (Ops) Buildandupload() {
 	var rnr = sys.Runner().WithEnv(map[string]string{
-		"PKGNAME": "cmdio",
+		"PKGNAME":         "cmdio",
 		"DOCKER_USERNAME": os.Getenv("DOCKER_USERNAME"),
 		"DOCKER_PASSWORD": os.Getenv("DOCKER_PASSWORD"),
 	})
@@ -42,8 +42,8 @@ func (Ops) Build() {
 	}
 
 	// Log the image size
-    err = rnr.Run("sh", "-c", "docker images hy0tic/common-runner-image --format 'Image Size: {{.Size}}'")
-    if err != nil {
-        log.Fatal(err)
-    }
+	err = rnr.Run("sh", "-c", "docker images hy0tic/common-runner-image --format 'Image Size: {{.Size}}'")
+	if err != nil {
+		log.Fatal(err)
+	}
 }
