@@ -4,12 +4,12 @@ A simple github actions runner image alternative.
 Image link: https://hub.docker.com/repository/docker/hy0tic/common-runner-image
 
 ## Tools Installed
-- Alpine
-- Go
+- [Alpine](https://github.com/alpinelinux/alpine-make-vm-image)
+- [Go](https://github.com/golang/go)
 - bash
 - git
-- docker-cli
-- op
+- [docker-cli](https://github.com/docker/cli)
+- [op](https://github.com/lesiw/ops)
 
 ## Usage
 To use this image in your Github Actions runner, simply specify the image in the job:
