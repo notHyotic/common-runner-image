@@ -14,9 +14,10 @@ jobs:
         container: 
           image: hy0tic/common-runner-image
         steps:
-        - name: Clone repo manually
+        - name: Clone repo into subdirectory
           run: |
-            git clone --depth=1 https://github.com/${{ github.repository }} .
+            git clone --depth=1 https://github.com/${{ github.repository }} repo
+            cd repo
             git checkout ${{ github.ref_name }}
 
         - name: Log into Docker and upload image

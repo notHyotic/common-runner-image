@@ -23,10 +23,5 @@ RUN apk add --no-cache \
 # Install the 'op' tool
 RUN go install lesiw.io/op@latest
 
-# Create non-root user
-RUN adduser -D -g '' runner
-USER runner
-WORKDIR /go
-
 # Default command
 CMD ["go", "version"]
