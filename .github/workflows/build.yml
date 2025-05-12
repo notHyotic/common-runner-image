@@ -11,18 +11,11 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
+        container: 
+          image: hy0tic/common-runner-image
         steps:
         - name: Checkout code
           uses: actions/checkout@v3
-
-        - name: Set up Go
-          uses: actions/setup-go@v4
-          with:
-            go-version: "1.22.2"
-
-        - name: Install dependencies
-          run: |
-            go install lesiw.io/op@latest
 
         - name: Log into Docker and upload image
           env: 
