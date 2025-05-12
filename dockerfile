@@ -20,6 +20,9 @@ RUN apk add --no-cache \
  && rm go${GOLANG_VERSION}.linux-amd64.tar.gz \
  && mkdir -p /go/src /go/bin /go/pkg
 
+# Install the 'op' tool
+RUN go install lesiw.io/op@latest
+
 # Create non-root user
 RUN adduser -D -g '' runner
 USER runner
