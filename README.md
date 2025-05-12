@@ -16,7 +16,7 @@ To use this image in your Github Actions runner, simply specify the image in the
 ```
 jobs:
     build-and-upload:
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-latest  # this is still required
         container: 
           image: hy0tic/common-runner-image
 ```
