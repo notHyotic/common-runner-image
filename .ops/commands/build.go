@@ -40,4 +40,10 @@ func (Ops) Build() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	// Log the image size
+    err = rnr.Run("sh", "-c", "docker images hy0tic/common-runner-image --format 'Image Size: {{.Size}}'")
+    if err != nil {
+        log.Fatal(err)
+    }
 }
