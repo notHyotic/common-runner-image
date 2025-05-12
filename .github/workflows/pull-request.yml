@@ -16,10 +16,8 @@ jobs:
         steps:
         - name: Clone repo into subdirectory
           run: |
-            git clone --depth=1 https://github.com/${{ github.repository }} repo
+            git clone --depth=1 --branch ${{ github.event.pull_request.head.ref }} https://github.com/${{ github.repository }} repo
             cd repo
-            git fetch origin ${{ github.event.pull_request.head.ref }}:$GITHUB_HEAD_REF
-            git checkout $GITHUB_HEAD_REF
             ls -lah
 
         - name: Build Docker image
