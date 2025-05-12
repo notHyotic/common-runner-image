@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-    build:
+    build-and-upload:
         runs-on: ubuntu-latest
         container: 
           image: hy0tic/common-runner-image
