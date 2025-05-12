@@ -21,7 +21,7 @@ jobs:
             git checkout ${{ github.ref_name }}
             ls -lah
 
-        - name: Log into Docker and upload image
+        - name: Upload Docker Image
           env: 
             DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
             DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
