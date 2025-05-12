@@ -5,7 +5,7 @@ Image link: https://hub.docker.com/repository/docker/hy0tic/common-runner-image
 
 ## Tools Installed
 - Alpine
-- Golang
+- Go
 - bash
 - git
 - docker-cli
