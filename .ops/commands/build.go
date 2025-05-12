@@ -4,16 +4,16 @@ import (
 	"log"
 	"os"
 
-	// "github.com/joho/godotenv"
+	"github.com/joho/godotenv"
 	"lesiw.io/cmdio/sys"
 )
 
-// func init() {
-// 	err := godotenv.Load()
-// 	if err != nil {
-// 		log.Fatal("Error loading .env file")
-// 	}
-// }
+func init() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+}
 
 func (Ops) Build() {
 	var rnr = sys.Runner().WithEnv(map[string]string{
@@ -30,7 +30,7 @@ func (Ops) Build() {
 	}
 
 	// Log into docker
-	err = rnr.Run("echo", "$DOCKER_PASSWORD","|", "docker", "login", "-u", "$DOCKER_USERNAME", "--password-stdin")
+	err = rnr.Run("sh", "-c", "echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin")
 	if err != nil {
 		log.Fatal(err)
 	}
