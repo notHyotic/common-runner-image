@@ -4,16 +4,16 @@ import (
 	"log"
 	"os"
 
-	// "github.com/joho/godotenv"
+	"github.com/joho/godotenv"
 	"lesiw.io/cmdio/sys"
 )
 
-// func init() {
-// 	err := godotenv.Load()
-// 	if err != nil {
-// 		log.Fatal("Error loading .env file")
-// 	}
-// }
+func init() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Println("No .env file found, skipping loading environment variables")
+	}
+}
 
 func (Ops) Build() {
 	var rnr = sys.Runner().WithEnv(map[string]string{
