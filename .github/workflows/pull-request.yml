@@ -22,11 +22,8 @@ jobs:
             git checkout $GITHUB_HEAD_REF
             ls -lah
 
-        - name: Upload Docker Image
-          env: 
-            DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-            DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        - name: Build Docker image
           run: |
             cd repo
             ls -lah
-            op buildandupload
+            op build
