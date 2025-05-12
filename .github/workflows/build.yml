@@ -16,7 +16,7 @@ jobs:
         steps:
         - name: Clone repo into subdirectory
           run: |
-            git clone --depth=0 https://github.com/${{ github.repository }} repo
+            git clone --depth=1 https://github.com/${{ github.repository }} repo
             cd repo
             git checkout ${{ github.ref_name }}
             ls -lah
