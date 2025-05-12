@@ -15,13 +15,13 @@ jobs:
         - name: Checkout code
           uses: actions/checkout@v3
 
-        - name: Build docker image
-          run: docker build -t ${{secrets.DOCKER_USERNAME}}/common-runner-image .
+        - name: Install dependencies
+          run: |
+            go install lesiw.io/op@latest
 
         - name: Log into Docker and upload image
           env: 
             DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
             DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           run: |
-             echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-             docker push ${{secrets.DOCKER_USERNAME}}/common-runner-image:latest
+            op build
