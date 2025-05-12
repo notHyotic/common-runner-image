@@ -1,7 +1,7 @@
 # common runner image
 A simple github actions runner image alternative
 
-## tools installed
+## Tools Installed
 - Alpine
 - Golang
 - bash
