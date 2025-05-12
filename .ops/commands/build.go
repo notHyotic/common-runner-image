@@ -24,7 +24,7 @@ func (Ops) Build() {
 	defer rnr.Close()
 
 	// Build the image
-	err := rnr.Run("go", "build", "-t", "hy0tic/common-runner-image", ".")
+	err := rnr.Run("docker", "build", "-t", "hy0tic/common-runner-image", ".")
 	if err != nil {
 		log.Fatal(err)
 	}
