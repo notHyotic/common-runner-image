@@ -11,8 +11,6 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
-        container: 
-          image: hy0tic/common-runner-image
         steps:
         - name: Clone repo into subdirectory
           run: |
