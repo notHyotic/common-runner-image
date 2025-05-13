@@ -20,6 +20,12 @@ jobs:
             cd repo
             ls -lah
 
+        - name: Lint ops
+          run: |
+            cd repo
+            ls -lah
+            op lint
+            
         - name: Build Docker image
           run: |
             cd repo
