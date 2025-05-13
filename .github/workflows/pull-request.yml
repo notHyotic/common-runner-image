@@ -23,6 +23,8 @@ jobs:
           run: |
             git --version
             npm --version
+            node --version
             python3 --version
             pip3 --version
             java -version
+            dotnet --version
