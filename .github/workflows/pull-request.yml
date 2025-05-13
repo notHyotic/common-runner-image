@@ -31,3 +31,4 @@ jobs:
             go version
             rustc --version
             cargo --version
+            gcc --version
