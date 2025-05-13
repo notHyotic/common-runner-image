@@ -1,7 +1,7 @@
 FROM alpine:3.19
 
 # Environment variables for Go
-ENV GOLANG_VERSION=1.22.1 \
+ENV GOLANG_VERSION=1.24.3 \
     GOROOT=/usr/local/go \
     GOPATH=/go \
     PATH=/usr/local/go/bin:/go/bin:$PATH
