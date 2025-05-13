@@ -23,7 +23,6 @@ jobs:
         - name: test
           shell: bash
           run: |
-            dotnet --version
             node --version
             npm --version
             python3 --version
