@@ -32,11 +32,7 @@ func (Ops) Buildandupload() {
 	}
 
 	// Log into docker
-	err = cmdio.Pipe(
-		rnr.Command("echo", "$DOCKER_PASSWORD"),
-		rnr.Command("docker", "login",
-			"-u", "$DOCKER_USERNAME", "--password-stdin"),
-	)
+	err = rnr.Run("sh", "-c", "echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin")
 	if err != nil {
 		log.Fatal(err)
 	}
