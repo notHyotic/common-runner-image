@@ -3,8 +3,10 @@ package commands
 import (
 	"log"
 	"os"
+	"strings"
 
 	"github.com/joho/godotenv"
+	"lesiw.io/cmdio"
 	"lesiw.io/cmdio/sys"
 )
 
@@ -30,21 +32,27 @@ func (Ops) Buildandupload() {
 		log.Fatal(err)
 	}
 
+	// Log the image size
+	err = rnr.Run("docker", "images", "hy0tic/common-runner-image",
+		"--format", "Image Size: {{.Size}}")
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	// Log into docker
-	err = rnr.Run("sh", "-c", "echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin")
+	err = cmdio.Pipe(
+		strings.NewReader(rnr.Env("DOCKER_PASSWORD")),
+		rnr.Command("docker", "login",
+			"-u", rnr.Env("DOCKER_USERNAME"),
+			"--password-stdin",
+		),
+	)
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	// Push the image
 	err = rnr.Run("docker", "push", "hy0tic/common-runner-image:latest")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	// Log the image size
-	err = rnr.Run("docker", "images", "hy0tic/common-runner-image",
-		"--format", "Image Size: {{.Size}}")
 	if err != nil {
 		log.Fatal(err)
 	}
