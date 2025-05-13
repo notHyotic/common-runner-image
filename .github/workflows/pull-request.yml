@@ -28,3 +28,4 @@ jobs:
             pip3 --version
             java -version
             dotnet --version
+            go version
