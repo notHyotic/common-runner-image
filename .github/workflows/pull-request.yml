@@ -32,4 +32,4 @@ jobs:
             rustc --version
             cargo --version
             gcc --version
-            bun --version
+            hugo version
