@@ -32,5 +32,4 @@ jobs:
             rustc --version
             cargo --version
             gcc --version
-            deno --version
-            hugo version
+            bun --version
