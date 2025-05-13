@@ -23,5 +23,8 @@ RUN apk add --no-cache \
 # Install the 'op' tool
 RUN go install lesiw.io/op@latest
 
+# Install the 'golangci-lint' tool
+RUN go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.1.6
+
 # Default command
 CMD ["go", "version"]
