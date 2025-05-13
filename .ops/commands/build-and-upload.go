@@ -5,7 +5,6 @@ import (
 	"os"
 
 	"github.com/joho/godotenv"
-	"lesiw.io/cmdio"
 	"lesiw.io/cmdio/sys"
 )
 
