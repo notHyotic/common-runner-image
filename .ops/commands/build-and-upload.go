@@ -5,8 +5,8 @@ import (
 	"os"
 
 	"github.com/joho/godotenv"
-	"lesiw.io/cmdio/sys"
 	"lesiw.io/cmdio"
+	"lesiw.io/cmdio/sys"
 )
 
 func init() {
@@ -33,8 +33,9 @@ func (Ops) Buildandupload() {
 
 	// Log into docker
 	err = cmdio.Pipe(
-		rnr.Command("echo", os.Getenv("DOCKER_PASSWORD")),
-		rnr.Command("docker", "login", "-u", os.Getenv("DOCKER_USERNAME"), "--password-stdin"),
+		rnr.Command("echo", "$DOCKER_PASSWORD"),
+		rnr.Command("docker", "login",
+			"-u", "$DOCKER_USERNAME", "--password-stdin"),
 	)
 	if err != nil {
 		log.Fatal(err)
@@ -47,7 +48,8 @@ func (Ops) Buildandupload() {
 	}
 
 	// Log the image size
-	err = rnr.Run("docker", "images", "hy0tic/common-runner-image", "--format", "Image Size: {{.Size}}")
+	err = rnr.Run("docker", "images", "hy0tic/common-runner-image",
+		"--format", "Image Size: {{.Size}}")
 	if err != nil {
 		log.Fatal(err)
 	}
