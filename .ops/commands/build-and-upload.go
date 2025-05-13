@@ -6,12 +6,14 @@ import (
 
 	"github.com/joho/godotenv"
 	"lesiw.io/cmdio/sys"
+	"lesiw.io/cmdio"
 )
 
 func init() {
 	err := godotenv.Load()
 	if err != nil {
-		log.Println("No .env file found, skipping loading environment variables")
+		log.Println("No .env file found")
+		log.Println("Skipping loading .env file")
 	}
 }
 
@@ -30,7 +32,10 @@ func (Ops) Buildandupload() {
 	}
 
 	// Log into docker
-	err = rnr.Run("sh", "-c", "echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin")
+	err = cmdio.Pipe(
+		rnr.Command("echo", os.Getenv("DOCKER_PASSWORD")),
+		rnr.Command("docker", "login", "-u", os.Getenv("DOCKER_USERNAME"), "--password-stdin"),
+	)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -42,7 +47,7 @@ func (Ops) Buildandupload() {
 	}
 
 	// Log the image size
-	err = rnr.Run("sh", "-c", "docker images hy0tic/common-runner-image --format 'Image Size: {{.Size}}'")
+	err = rnr.Run("docker", "images", "hy0tic/common-runner-image", "--format", "Image Size: {{.Size}}")
 	if err != nil {
 		log.Fatal(err)
 	}
