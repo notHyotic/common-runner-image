@@ -29,3 +29,5 @@ jobs:
             java -version
             dotnet --version
             go version
+            rustc --version
+            cargo --version
