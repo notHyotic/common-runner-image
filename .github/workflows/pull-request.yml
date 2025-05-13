@@ -20,14 +20,12 @@ jobs:
             cd repo
             ls -lah
 
-        - name: Lint ops
+        - name: test
+          shell: bash
           run: |
-            cd repo
-            ls -lah
-            op lint
-            
-        - name: Build Docker image
-          run: |
-            cd repo
-            ls -lah
-            op build
+            dotnet --version
+            node --version
+            npm --version
+            python3 --version
+            pip3 --version
+            java -version
