@@ -36,5 +36,4 @@ jobs:
             make --version
             cmake --version
             docker --version
-            docker-compose --version
             ansible --version
