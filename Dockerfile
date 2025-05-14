@@ -8,13 +8,15 @@ ENV GOLANG_VERSION=1.24.3 \
 
 # Install system packages, Go, and Docker CLI
 RUN apk add --no-cache \
-      bash \
-      curl \
-      git \
-      gcc \
-      musl-dev \
-      docker-cli \
-      ca-certificates \
+    bash \
+    curl \
+    git \
+    gcc \
+    musl-dev \
+    docker-cli \
+    ca-certificates \
+    nodejs \
+    npm \
  && curl -LO https://golang.org/dl/go${GOLANG_VERSION}.linux-amd64.tar.gz \
  && tar -C /usr/local -xzf go${GOLANG_VERSION}.linux-amd64.tar.gz \
  && rm go${GOLANG_VERSION}.linux-amd64.tar.gz \
