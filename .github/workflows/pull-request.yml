@@ -35,3 +35,6 @@ jobs:
             g++ --version
             make --version
             cmake --version
+            docker --version
+            docker-compose --version
+            ansible --version
