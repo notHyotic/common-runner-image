@@ -1,6 +1,8 @@
 # common runner image
 A simple github actions runner image alternative.
 
+Image definition: [Dockerfile](Dockerfile)
+
 Image link: https://hub.docker.com/repository/docker/hy0tic/common-runner-image
 
 ## Tools Installed
