@@ -34,4 +34,4 @@ jobs:
             gcc --version
             g++ --version
             make --version
-            
+            cmake --version
