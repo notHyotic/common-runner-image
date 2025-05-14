@@ -10,24 +10,24 @@ on:
 
 jobs:
     build:
-        runs-on: ubuntu-latest
-        container: 
-          image: hy0tic/common-runner-image
-        steps:
-        - name: Clone repo into subdirectory
-          run: |
-            git clone --depth=1 --branch ${{ github.event.pull_request.head.ref }} https://github.com/${{ github.repository }} repo
-            cd repo
-            ls -lah
+      runs-on: ubuntu-latest
+      container: 
+        image: hy0tic/common-runner-image
+      steps:
+      - name: Clone repo into subdirectory
+        run: |
+          git clone --depth=1 --branch ${{ github.event.pull_request.head.ref }} https://github.com/${{ github.repository }} repo
+          cd repo
+          ls -lah
 
-        - name: Lint ops
-          run: |
-            cd repo
-            ls -lah
-            op lint
+      - name: Lint ops
+        run: |
+          cd repo
+          ls -lah
+          op lint
             
-        - name: Build Docker image
-          run: |
-            cd repo
-            ls -lah
-            op build
+      - name: Build Docker image
+        run: |
+          cd repo
+          ls -lah
+          op build
