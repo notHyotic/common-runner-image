@@ -32,4 +32,6 @@ jobs:
             rustc --version
             cargo --version
             gcc --version
-            hugo version
+            g++ --version
+            make --version
+            
