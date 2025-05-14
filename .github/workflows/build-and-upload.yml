@@ -4,8 +4,8 @@ on:
   push:
     branches:
       [ main ]
-    paths:
-      - dockerfile
+    paths-ignore:
+      - "**.md"
   workflow_dispatch:
 
 jobs:
