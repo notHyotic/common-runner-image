@@ -17,6 +17,7 @@ RUN apk add --no-cache \
     ca-certificates \
     nodejs \
     npm \
+    tar \
  && curl -LO https://golang.org/dl/go${GOLANG_VERSION}.linux-amd64.tar.gz \
  && tar -C /usr/local -xzf go${GOLANG_VERSION}.linux-amd64.tar.gz \
  && rm go${GOLANG_VERSION}.linux-amd64.tar.gz \
