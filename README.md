@@ -11,6 +11,8 @@ Image link: https://hub.docker.com/repository/docker/hy0tic/common-runner-image
 - [git](https://github.com/git/git)
 - [docker-cli](https://github.com/docker/cli)
 - [op](https://github.com/lesiw/ops)
+- [node](https://github.com/nodejs/node)
+- [npm](https://github.com/npm/cli)
 
 ## Usage
 To use this image in your Github Actions runner, simply specify the image in the job:
