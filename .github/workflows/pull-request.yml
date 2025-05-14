@@ -40,3 +40,6 @@ jobs:
             curl --version
             bash --version
             wget --version
+            ca-certificates --version
+            musl-dev --version
+            libffi-dev --version
