@@ -37,3 +37,6 @@ jobs:
             cmake --version
             docker --version
             ansible --version
+            curl --version
+            bash --version
+            wget --version
