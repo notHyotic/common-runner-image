@@ -12,8 +12,11 @@ jobs:
     container:
       image: hy0tic/common-runner-image:latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Manual checkout repository
+        run: |
+          git clone --depth=1 https://github.com/${{ github.repository }} repo
+          cd repo
+          ls -lah
 
       - name: Extract workflow run metadata
         run: |
@@ -33,4 +36,6 @@ jobs:
 
       - name: Send metadata to AWS SQS
         run: |
+          cd repo
+          ls -lah
           op exportdata
