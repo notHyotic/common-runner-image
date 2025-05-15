@@ -19,6 +19,7 @@ jobs:
           ls -lah
 
       - name: Extract workflow run metadata
+        id: extract
         run: |
           echo "run_id=${{ github.event.workflow_run.id }}" >> $GITHUB_OUTPUT
           echo "repo=${{ github.repository }}" >> $GITHUB_OUTPUT
@@ -35,6 +36,13 @@ jobs:
           aws-region: 'us-east-1'
 
       - name: Send metadata to AWS SQS
+        env:
+          RUN_ID: ${{ steps.extract.outputs.run_id }}
+          REPOSITORY: ${{ steps.extract.outputs.repo }}
+          RUN_STARTED_AT: ${{ steps.extract.outputs.run_started_at }}
+          UPDATED_AT: ${{ steps.extract.outputs.updated_at }}
+          STATUS: ${{ steps.extract.outputs.status }}
+          CONCLUSION: ${{ steps.extract.outputs.conclusion }}
         run: |
           cd repo
           ls -lah
