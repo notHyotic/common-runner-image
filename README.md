@@ -15,6 +15,7 @@ Image link: https://hub.docker.com/repository/docker/hy0tic/common-runner-image
 - [op](https://github.com/lesiw/ops)
 - [node](https://github.com/nodejs/node)
 - [npm](https://github.com/npm/cli)
+- [terraform](https://github.com/hashicorp/terraform)
 
 ## Usage
 To use this image in your Github Actions runner, simply specify the image in the job:
