@@ -11,7 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Extract workflow run metadata
-        id: extract
         run: |
           echo "run_id=${{ github.event.workflow_run.id }}" >> $GITHUB_OUTPUT
           echo "repo=${{ github.repository }}" >> $GITHUB_OUTPUT
@@ -20,21 +19,13 @@ jobs:
           echo "status=${{ github.event.workflow_run.status }}" >> $GITHUB_OUTPUT
           echo "conclusion=${{ github.event.workflow_run.conclusion }}" >> $GITHUB_OUTPUT
 
-    #   - name: Send metadata to AWS SQS
-    #     uses: aws-actions/configure-aws-credentials@v2
-    #     with:
-    #       aws-region: us-east-1
-    #       role-to-assume: arn:aws:iam::YOUR_ACCOUNT_ID:role/YOUR_ROLE_NAME
-    #     env:
-    #       QUEUE_URL: https://sqs.us-east-1.amazonaws.com/YOUR_ACCOUNT_ID/YOUR_QUEUE_NAME
-    #     run: |
-    #       METADATA=$(jq -n \
-    #         --arg run_id "${{ steps.extract.outputs.run_id }}" \
-    #         --arg repo "${{ steps.extract.outputs.repo }}" \
-    #         --arg run_started_at "${{ steps.extract.outputs.run_started_at }}" \
-    #         --arg updated_at "${{ steps.extract.outputs.updated_at }}" \
-    #         --arg status "${{ steps.extract.outputs.status }}" \
-    #         --arg conclusion "${{ steps.extract.outputs.conclusion }}" \
-    #         '{run_id: $run_id, repository: $repo, run_started_at: $run_started_at, updated_at: $updated_at, status: $status, conclusion: $conclusion}')
-          
-    #       aws sqs send-message --queue-url "$QUEUE_URL" --message-body "$METADATA"
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: 'us-east-1'
+
+      - name: Send metadata to AWS SQS
+        run: |
+          op exportdata
