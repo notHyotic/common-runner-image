@@ -19,11 +19,13 @@ RUN apk add --no-cache \
     npm \
     tar \
     zip \
-    terraform \
  && curl -LO https://golang.org/dl/go${GOLANG_VERSION}.linux-amd64.tar.gz \
  && tar -C /usr/local -xzf go${GOLANG_VERSION}.linux-amd64.tar.gz \
  && rm go${GOLANG_VERSION}.linux-amd64.tar.gz \
- && mkdir -p /go/src /go/bin /go/pkg
+ && mkdir -p /go/src /go/bin /go/pkg \
+ && wget https://releases.hashicorp.com/terraform/1.8.4/terraform_1.8.4_linux_amd64.zip \
+ && unzip terraform_1.8.4_linux_amd64.zip -d /usr/local/bin \
+ && rm terraform_1.8.4_linux_amd64.zip
 
 # Install the 'op' tool
 RUN go install lesiw.io/op@latest
