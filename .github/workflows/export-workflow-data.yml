@@ -12,6 +12,9 @@ jobs:
     container:
       image: hy0tic/common-runner-image:latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Extract workflow run metadata
         run: |
           echo "run_id=${{ github.event.workflow_run.id }}" >> $GITHUB_OUTPUT
