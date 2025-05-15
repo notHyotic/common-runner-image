@@ -17,10 +17,14 @@ type Metadata struct {
 	Conclusion   string `json:"conclusion"`
 }
 
+var (
+	u = "https://sqs.us-east-1.amazonaws.com/915898657279/runner-metrics-queue"
+)
+
 func (Ops) Exportdata() {
 	var rnr = sys.Runner().WithEnv(map[string]string{
 		"PKGNAME":        "cmdio",
-		"QUEUE_URL":      "https://sqs.us-east-1.amazonaws.com/915898657279/runner-metrics-queue",
+		"QUEUE_URL":      u,
 		"RUN_ID":         os.Getenv("RUN_ID"),
 		"REPOSITORY":     os.Getenv("REPOSITORY"),
 		"RUN_STARTED_AT": os.Getenv("RUN_STARTED_AT"),

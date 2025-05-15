@@ -11,7 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: hy0tic/common-runner-image:latest
-
     steps:
       - name: Extract workflow run metadata
         run: |
