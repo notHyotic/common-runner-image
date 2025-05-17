@@ -7,12 +7,11 @@ import (
 )
 
 func (Ops) Build() {
-	var rnr = sys.Runner().WithEnv(map[string]string{
-		"PKGNAME": "cmdio",
-	})
+	var rnr = sys.Runner()
 	defer rnr.Close()
+	var err error
 
-	err := rnr.Run("docker", "build", "-t", "hy0tic/common-runner-image", ".")
+	err = rnr.Run("docker", "build", "-t", "hy0tic/common-runner-image", ".")
 	if err != nil {
 		log.Fatal(err)
 	}
