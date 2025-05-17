@@ -21,6 +21,7 @@ jobs:
       - name: Extract workflow run metadata
         id: extract
         run: |
+          echo "workflow_name=${{ github.event.workflow_run.name }}" >> $GITHUB_OUTPUT
           echo "run_id=${{ github.event.workflow_run.id }}" >> $GITHUB_OUTPUT
           echo "repo=${{ github.repository }}" >> $GITHUB_OUTPUT
           echo "run_started_at=${{ github.event.workflow_run.run_started_at }}" >> $GITHUB_OUTPUT
