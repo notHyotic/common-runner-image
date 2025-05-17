@@ -26,20 +26,17 @@ func (Ops) Buildandupload() {
 	})
 	defer rnr.Close()
 
-	// Build the image
 	err := rnr.Run("docker", "build", "-t", "hy0tic/common-runner-image", ".")
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	// Log the image size
 	err = rnr.Run("docker", "images", "hy0tic/common-runner-image",
 		"--format", "Image Size: {{.Size}}")
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	// Log into docker
 	err = cmdio.Pipe(
 		strings.NewReader(rnr.Env("DOCKER_PASSWORD")),
 		rnr.Command("docker", "login",
@@ -51,7 +48,6 @@ func (Ops) Buildandupload() {
 		log.Fatal(err)
 	}
 
-	// Push the image
 	err = rnr.Run("docker", "push", "hy0tic/common-runner-image:latest")
 	if err != nil {
 		log.Fatal(err)
