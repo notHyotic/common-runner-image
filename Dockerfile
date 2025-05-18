@@ -11,8 +11,6 @@ RUN apk add --no-cache \
     bash \
     curl \
     git \
-    gcc \
-    musl-dev \
     docker-cli \
     ca-certificates \
     nodejs \

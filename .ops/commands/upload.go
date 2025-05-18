@@ -20,7 +20,6 @@ func init() {
 
 func (Ops) Upload() {
 	var rnr = sys.Runner().WithEnv(map[string]string{
-		"PKGNAME":         "cmdio",
 		"DOCKER_USERNAME": os.Getenv("DOCKER_USERNAME"),
 		"DOCKER_PASSWORD": os.Getenv("DOCKER_PASSWORD"),
 	})
